@@ -47,8 +47,6 @@
           [2, 2, 2, 2, 6, 7, 2, 8, 2, 6, 6, 6, 6, 2, 2, 6]
         ];
 
-        
-
         img.onload = function () {
           context.scale(2, 2);
 
@@ -171,25 +169,24 @@
           var code = e.keyCode;
           switch (code) {
             case 37: 
-              context.clearRect(0, 0, canvas.width, canvas.height);
-              context.drawImage(img, 52, 316, 16, 16, cx - TILE_SIZE, cy, TILE_SIZE, TILE_SIZE)
-              cx -=TILE_SIZE;
+              context.clearRect(0, 0, TILE_SIZE, TILE_SIZE);
+              context.drawImage(img, 52, 316, 16, 16, cx + TILE_SIZE, cy, TILE_SIZE, TILE_SIZE);
+              cx -= 1;
             break;
             case 38: 
-              context.clearRect(0, 0, canvas.width, canvas.height);
+              context.clearRect(0, 0, TILE_SIZE, TILE_SIZE);
               context.drawImage(img, 36, 316, 16, 16, cx, cy - TILE_SIZE, TILE_SIZE, TILE_SIZE)
-              cy -= TILE_SIZE;
+              cy -= 1;
             break;
             case 39: 
-              context.clearRect(0, 0, canvas.width, canvas.height);
+              context.clearRect(0, 0, TILE_SIZE, TILE_SIZE);
               context.drawImage(img, 3, 316, 16, 16, cx + TILE_SIZE, cy, TILE_SIZE, TILE_SIZE);
-              cx += TILE_SIZE;
+              cx += 1;
             break;
             case 40: 
-               context.clearRect(0, 0, canvas.width, canvas.height);
-                context.drawImage(img, 20, 316, 16, 16, cx, cy + TILE_SIZE, TILE_SIZE, TILE_SIZE);
-
-                cy += TILE_SIZE;
+              context.clearRect(0, 0, TILE_SIZE, TILE_SIZE);
+              context.drawImage(img, 20, 316, 16, 16, cx, cy - TILE_SIZE, TILE_SIZE, TILE_SIZE);
+              cy += 1;
             break;
           }
         }
