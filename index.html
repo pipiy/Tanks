@@ -88,24 +88,6 @@
           }
         };
 
-        window.requestAnimationFrame = (function(){
-          //Check for each browser
-          //@paul_irish function
-          //Globalises this function to work on any browser as each browser has a different namespace for this
-          return  window.requestAnimationFrame       ||  //Chromium 
-                  window.webkitRequestAnimationFrame ||  //Webkit
-                  window.mozRequestAnimationFrame    || //Mozilla Geko
-                  window.oRequestAnimationFrame      || //Opera Presto
-                  window.msRequestAnimationFrame     || //IE Trident?
-                  function(callback, element){ //Fallback function
-                      window.setTimeout(callback, 1000/60);                
-                  }
-        })();
-
-        requestAnimationFrame(function() {
-          console.log('teast');
-        });
-
         function stone(x, y) {
           context.save();
           context.translate(x, y);
@@ -188,10 +170,14 @@
         function check(e) {
           var code = e.keyCode;
           switch (code) {
-            case 37: alert("Left"); break; //Left key
-            case 38: alert("Up"); break; //Up key
-            case 39: alert("Right"); break; //Right key
-            case 40: alert("Down"); break; //Down key
+            case 37: alert("Left");
+            break;
+            case 38: alert("Up");
+            break;
+            case 39: alert("Right");
+            break;
+            case 40: alert("Down");
+            break;
           }
         }
     </script>
