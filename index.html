@@ -13,7 +13,8 @@
         canvas.height = 8 * size; // the height of the playing field
 
         var TILE_SIZE = 16;
-
+        var cx = 0,
+            cy = 0;
         img = new Image();
         img.src = "misc.png";
 
@@ -26,7 +27,6 @@
         var TANK = 7;
         var FLAG = 8;
         var ENEMY_TANK = 9;
-        var speed = 3;
 
         var map = [
           [6, 6, 4, 4, 6, 6, 6, 6, 6, 6, 4, 4, 4, 6, 6, 6],
@@ -170,13 +170,26 @@
         function check(e) {
           var code = e.keyCode;
           switch (code) {
-            case 37: alert("Left");
+            case 37: 
+              context.clearRect(0, 0, canvas.width, canvas.height);
+              context.drawImage(img, 52, 316, 16, 16, cx - TILE_SIZE, cy, TILE_SIZE, TILE_SIZE)
+              cx -=TILE_SIZE;
             break;
-            case 38: alert("Up");
+            case 38: 
+              context.clearRect(0, 0, canvas.width, canvas.height);
+              context.drawImage(img, 36, 316, 16, 16, cx, cy - TILE_SIZE, TILE_SIZE, TILE_SIZE)
+              cy -= TILE_SIZE;
             break;
-            case 39: alert("Right");
+            case 39: 
+              context.clearRect(0, 0, canvas.width, canvas.height);
+              context.drawImage(img, 3, 316, 16, 16, cx + TILE_SIZE, cy, TILE_SIZE, TILE_SIZE);
+              cx += TILE_SIZE;
             break;
-            case 40: alert("Down");
+            case 40: 
+               context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(img, 20, 316, 16, 16, cx, cy + TILE_SIZE, TILE_SIZE, TILE_SIZE);
+
+                cy += TILE_SIZE;
             break;
           }
         }
