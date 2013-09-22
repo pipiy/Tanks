@@ -172,21 +172,21 @@
               context.clearRect(0, 0, TILE_SIZE, TILE_SIZE);
               context.drawImage(img, 52, 316, 16, 16, cx + TILE_SIZE, cy, TILE_SIZE, TILE_SIZE);
               cx -= 1;
-            break;
-            case 38: 
-              context.clearRect(0, 0, TILE_SIZE, TILE_SIZE);
-              context.drawImage(img, 36, 316, 16, 16, cx, cy - TILE_SIZE, TILE_SIZE, TILE_SIZE)
-              cy -= 1;
-            break;
+            break;// left
             case 39: 
               context.clearRect(0, 0, TILE_SIZE, TILE_SIZE);
               context.drawImage(img, 3, 316, 16, 16, cx + TILE_SIZE, cy, TILE_SIZE, TILE_SIZE);
               cx += 1;
-            break;
+            break;// right
+            case 38: 
+              context.clearRect(0, 0, TILE_SIZE, TILE_SIZE);
+              context.drawImage(img, 36, 316, 16, 16, cx + TILE_SIZE, cy, TILE_SIZE, TILE_SIZE)
+              cy -= 1;
+            break;// up
             case 40: 
               context.clearRect(0, 0, TILE_SIZE, TILE_SIZE);
-              context.drawImage(img, 20, 316, 16, 16, cx, cy - TILE_SIZE, TILE_SIZE, TILE_SIZE);
-              cy += 1;
+              context.drawImage(img, 20, 316, 16, 16, cx + TILE_SIZE, cy, TILE_SIZE, TILE_SIZE);
+              cy += 1;// down
             break;
           }
         }
