@@ -188,6 +188,13 @@
               context.drawImage(img, 20, 316, 16, 16, cx + TILE_SIZE, cy, TILE_SIZE, TILE_SIZE);
               cy += 1;// down
             break;
+            case 32:
+              context.save();
+              context.clearRect(0, 0, TILE_SIZE, TILE_SIZE);
+              context.translate(0, -10)
+              context.drawImage(img, 162, 377, 4, 4, cx + 21, cy, 4, 4);
+              context.restore() 
+            break;
           }
         }
     </script>
