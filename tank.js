@@ -61,13 +61,15 @@ function explode() {
 
 var Player = function() {
   this.way = 38;
-
   var context = this;
   window.addEventListener('keydown', function(e) {
     context.way = e.keyCode;
+    context.is_moving = true;
+    context.is_shooting = true;
   }, false);
   window.addEventListener('keyup', function(e) {
-    context.way = 0;
+    context.is_moving = false;
+    context.is_shooting = 0;
   }, false);
 };
 
@@ -78,19 +80,21 @@ Player.prototype.update = function() {
     bullets.push(bullet);
   } else {
     // else we are moving on the map
-    switch (this.way) {
-      case 37:
-        cx -= 1;
-      break;// left
-      case 39:
-        cx += 1;
-      break;// right
-      case 38:
-        cy -= 1;
-      break;// up
-      case 40:
-        cy += 1;// down
-      break;
+    if(this.is_moving) {
+      switch (this.way) {
+        case 37:
+          cx -= 1;
+        break;// left
+        case 39:
+          cx += 1;
+        break;// right
+        case 38:
+          cy -= 1;
+        break;// up
+        case 40:
+          cy += 1;// down
+        break;
+      }
     }
   }
 
@@ -108,7 +112,6 @@ Player.prototype.update = function() {
 Player.prototype.draw = function() {
   context.save();
   context.translate(cx, cy);
-
   switch (this.way) {
     case 37:
       context.drawImage(img, 52, 316, 16, 16, 0, 0, TILE_SIZE, TILE_SIZE);
@@ -117,13 +120,12 @@ Player.prototype.draw = function() {
       context.drawImage(img, 1, 316, 16, 16, 0, 0, TILE_SIZE, TILE_SIZE);
     break;// right
     case 38:
-      context.drawImage(img, 36, 316, 16, 16, 0, 0, TILE_SIZE, TILE_SIZE)
+      context.drawImage(img, 36, 316, 16, 16, 0, 0, TILE_SIZE, TILE_SIZE);
     break;// up
     case 40:
       context.drawImage(img, 20, 316, 16, 16, 0, 0, TILE_SIZE, TILE_SIZE);
     break;
   }
-
   context.restore();
 };
 
