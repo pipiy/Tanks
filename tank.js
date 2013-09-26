@@ -65,11 +65,9 @@ var Player = function() {
   window.addEventListener('keydown', function(e) {
     context.way = e.keyCode;
     context.is_moving = true;
-    context.is_shooting = true;
   }, false);
   window.addEventListener('keyup', function(e) {
     context.is_moving = false;
-    context.is_shooting = 0;
   }, false);
 };
 
